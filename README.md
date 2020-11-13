@@ -46,3 +46,56 @@ int main(void){
 	}
 	return 0;
 } 
+***************
+#include<stdio.h>
+int main(){
+	int m,n;
+	scanf("%d %d",&m,&n);
+	int a[m][n],b[m][n];
+	int i,j;
+	for(i=0;i<m;i++){
+		for(j=0;j<n;j++){
+			scanf("%d",&a[i][j]); 
+			b[i][j]=0;
+		}
+	}
+	int p=0,q=0;
+	for(i=0;i<m;i++){//ÀûÓÃ0,1À´ÅÐ¶ÏÊÇ·Ç¡¢ÕýÎó£¬¿ÉÊ¹³ÌÐòÇåÎúÃ÷ÁË£»¶ø²»ÊÇÖ±½Ó½øÐÐ±È½Ï¡£ 
+		int min=a[i][0];
+		for(j=0;j<n;j++){
+		if(a[i][j]<min){
+			min=a[i][j];
+			p=i;//ÐÐ×îÐ¡++£¬ÁÐ×î´ó++£¬ÊýÖµÎª¶þµÄ×ø±ê¼´ÎªÂí°°µã¡£ 
+			q=j;
+			}
+		}
+		if(a[p][q]==min) b[p][q]++;//×¢ÒâÔÚµÚÒ»ÂÖÑ­»·ÖÐÒòÎÞÂí°°µã£¬¹Ê00Ò²±»¸³Öµ£¬ËùÒÔÓ¦ÉèÖÃÏÞÖÆ±ÜÃâ´íÎó¡£ 
+	}
+	for(i=0;i<n;i++){
+		p=0;
+		q=0;
+		int max=a[0][i];
+		for(j=0;j<m;j++){
+		if(a[j][i]>max){
+			max=a[j][i];
+			p=j;
+			q=i;
+			}
+		}
+		if(a[p][q]==max) b[p][q]++;
+	}int jug=0;
+	for(i=0;i<m;i++){
+		for(j=0;j<n;j++
+			if(b[i][j]==2){
+				printf("%d %d %d\n",i,j,a[i][j]);
+				jug=1;
+			}
+		}
+	}
+	if(jug==0){
+		printf("no\n");
+	}
+	return 0;
+}
+
+
